@@ -4,9 +4,24 @@ def selection_sort(arr):
     for i in range(0, len(arr) - 1):
         cur_index = i
         smallest_index = cur_index
+        # cur_value = arr[i]
+        # smallest_value = arr[smallest_index]
         # TO-DO: find next smallest element
         # (hint, can do in 3 loc)
         # Your code here
+
+
+        # i should always be the smallest value that has been found so far
+
+        # here you need to go through the array, find the next smallest value, then swap the index of the two
+        for j in range(0+i, len(arr)):
+            if arr[j] < arr[smallest_index]:
+                smallest_index = j
+        #swap
+        arr[cur_index], arr[smallest_index] = arr[smallest_index], arr[cur_index]
+
+
+
 
 
         # TO-DO: swap
@@ -14,13 +29,64 @@ def selection_sort(arr):
 
     return arr
 
+x = [8,4,5,2,7,9,1]
+selection_sort(x)
+
+''' UPER
+
+U - UNDERSTAND: What is the problem asking me to do?
+P - PLAN: What steps will I take to solve the problem? (Don't code much, just write out your plan)
+E - EXECUTE: How do I implement those steps? (Now start coding)
+R - REFLECT: Is this implementation as good as I can make it? (Optimize)
+
+'''
 
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort(arr):
     # Your code here
 
+    # This problem is asking me to compare each value to the one next to it, swap them into ascending order,
+    # and go through the loop until the entire array is sorted in ascending order
+
+    # bubble sort is the same as insertion sort but instead of continuing to compare the same value you are
+    # going down the list
+
+    # how to continue the loop until everything is ordered? 
+
+    # loop over each value in the array
+    for i in range(0, len(arr)-1):
+        # set a loop within the loop - the first loop will push the highest value to the end, so
+        # the second instance of the inner loop doesnt need to include the last value in the array
+        for j in range(0, len(arr)-i-1):
+            cur_index = j
+            
+            if arr[cur_index] > arr[cur_index + 1]:
+                #swap
+                arr[cur_index], arr[cur_index + 1] = arr[cur_index + 1], arr[cur_index]
 
     return arr
+
+
+
+
+x = [8,4,5,2,7,9,1]
+
+bubble_sort(x)
+
+def insertion_sort(arr):
+    # Your code here
+
+    for i in range(0, len(arr)):
+        cur_index = i
+
+        while cur_index > 0 and arr[cur_index] < arr[cur_index - 1]:
+            #swap
+            arr[cur_index], arr[cur_index - 1] = arr[cur_index - 1], arr[cur_index]
+            cur_index -= 1
+
+    return arr
+
+
 
 '''
 STRETCH: implement the Count Sort function below
